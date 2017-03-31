@@ -1,0 +1,11 @@
+# main viewの左端にコミットIDを表示する
+set main-view = id date author commit-title:graph=yes,refs=yes
+
+# 画面を垂直方向に分割する
+set vertical-split = yes
+
+# 色設定
+color date cyan default
+color delimiter cyan default
+color graph-commit cyan default
+color diff-stat	cyan default
