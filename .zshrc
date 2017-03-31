@@ -1,0 +1,125 @@
+export LANG=ja_JP.UTF-8
+
+PATH=$PATH/usr/local/bin:/usr/bin:$HOME/bin:/sbin
+PATH=$PATH:$HOME/Library/Android/sdk/platform-tools
+
+export PATH
+
+export ANDROID_HOME=$HOME/Library/Android/sdk
+
+#rbenvの設定
+eval "$(rbenv init -)"
+
+#補完をロードして設定
+autoload -U compinit
+compinit
+
+#履歴
+HISTFILE=~/.zhistory
+HISTSIZE=100000
+SAVEHIST=100000
+
+#重複する履歴はignoreに
+setopt hist_ignore_dups
+
+#重複コマンドの保存時には古い方を削除する
+setopt hist_save_no_dups
+
+#先頭がスペースの場合は履歴追加しない
+setopt hist_ignore_space
+
+#余分な空白は詰めて記録
+setopt hist_reduce_blanks
+
+#historyコマンドは記録しない
+setopt hist_no_store
+
+#履歴をシェア
+setopt share_history
+
+#履歴検索機能のショートカット設定
+autoload history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^P" history-beginning-search-backward-end
+bindkey "^N" history-beginning-search-forward-end
+
+# bck-i-searchでAND検索
+bindkey '^R' history-incremental-pattern-search-backward
+bindkey '^S' history-incremental-pattern-search-forward
+
+#^sでfwd-i-search
+stty -ixon
+
+#Emacsモードのキーバインド
+bindkey -e
+
+#undoとredoのキーバインド
+bindkey "^[u" undo
+bindkey "^[r" redo
+
+#cdなしでcdする
+setopt auto_cd
+
+#beep音を出さない
+setopt nolistbeep
+setopt no_beep
+
+#aliaseでも補完してくれる
+setopt complete_aliases
+
+#ワイルドカード等をescapeする
+setopt nonomatch
+
+#移動したディレクトリを記録（cd -[TAB]）
+setopt auto_pushd
+
+#間違ったコマンド名を修正確認してくれる
+setopt correct
+
+#補完候補を詰めて表示
+setopt list_packed
+
+#補完候補一覧をカラー表示
+zstyle ':completion:*' list-colors ''
+
+# 補完候補をカーソルで選択できる
+zstyle ':completion:*:default' menu select=1
+
+#パスの最後のスラッシュを自動的に削除させない
+setopt noautoremoveslash
+
+#コマンド実行時に右プロンプトを消す
+setopt transient_rprompt
+
+#補完候補の一覧表示
+setopt auto_list
+
+#auto_listの一覧でファイル種別をマーク表示
+setopt list_types
+
+#補完キーを連打するだけで順に自動で補完する
+setopt auto_menu
+
+#複数のzsh使用時に上書きせず追記する
+setopt append_history
+
+# 補完候補のメニュー選択で、矢印キーの代わりにhjklで移動出来るようにする。
+zmodload zsh/complist
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+
+#ターミナルの左右設定
+PROMPT=$'%{\e[33m%}%n$ '
+RPROMPT=$'%{\e[32m%}[%~]%{\e[m%}'
+
+#lsした時の色設定
+export LSCOLORS=gxfxcxdxbxegedabagacad
+
+alias ls="ls -G"
+alias ll="ls -al"
+alias la="ls -a"
+
+source ~/enhancd/init.sh

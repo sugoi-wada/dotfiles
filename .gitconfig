@@ -1,0 +1,24 @@
+[user]
+	name = Hikaru Wada
+	email = watyaa@gmail.com
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[core]
+	precomposeunicode = true
+	quotepath = false
+	excludesfile = /Users/wada/.gitignore_global
+[alias]
+	st = status
+	co = checkout
+	br = branch
+	ci = commit
+	fe = fetch 
+	ad = add
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
