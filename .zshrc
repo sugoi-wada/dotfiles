@@ -2,13 +2,15 @@ export LANG=ja_JP.UTF-8
 
 PATH=$PATH/usr/local/bin:/usr/bin:$HOME/bin:/sbin
 PATH=$PATH:$HOME/Library/Android/sdk/platform-tools
+PATH=$PATH:/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin
+PATH=$PATH:$HOME/.anyenv/bin
 
 export PATH
 
 export ANDROID_HOME=$HOME/Library/Android/sdk
 
-#rbenvの設定
-eval "$(rbenv init -)"
+#anyenvの設定
+eval "$(anyenv init -)"
 
 #補完をロードして設定
 autoload -U compinit
@@ -123,3 +125,5 @@ alias ll="ls -al"
 alias la="ls -a"
 
 source ~/enhancd/init.sh
+
+alias be='bundle exec'
