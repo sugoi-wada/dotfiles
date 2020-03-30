@@ -1,13 +1,13 @@
 export LANG=ja_JP.UTF-8
 
-PATH=$PATH/usr/local/bin:/usr/bin:$HOME/bin:/sbin
-PATH=$PATH:$HOME/Library/Android/sdk/platform-tools
-PATH=$PATH:/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin
-PATH=$PATH:$HOME/.anyenv/bin
+PATH=/usr/local/bin:$PATH
+PATH=$PATH/usr/bin:$HOME/bin:/sbin
+#PATH=$PATH:$HOME/Library/Android/sdk/platform-tools
+#PATH=$PATH:$HOME/.anyenv/bin
 
 export PATH
 
-export ANDROID_HOME=$HOME/Library/Android/sdk
+#export ANDROID_HOME=$HOME/Library/Android/sdk
 
 #anyenvの設定
 eval "$(anyenv init -)"
@@ -46,7 +46,7 @@ zle -N history-beginning-search-forward-end history-search-end
 bindkey "^P" history-beginning-search-backward-end
 bindkey "^N" history-beginning-search-forward-end
 
-# bck-i-searchでAND検索
+#bck-i-searchでAND検索
 bindkey '^R' history-incremental-pattern-search-backward
 bindkey '^S' history-incremental-pattern-search-forward
 
@@ -85,7 +85,7 @@ setopt list_packed
 #補完候補一覧をカラー表示
 zstyle ':completion:*' list-colors ''
 
-# 補完候補をカーソルで選択できる
+#補完候補をカーソルで選択できる
 zstyle ':completion:*:default' menu select=1
 
 #パスの最後のスラッシュを自動的に削除させない
@@ -106,7 +106,7 @@ setopt auto_menu
 #複数のzsh使用時に上書きせず追記する
 setopt append_history
 
-# 補完候補のメニュー選択で、矢印キーの代わりにhjklで移動出来るようにする。
+#補完候補のメニュー選択で、矢印キーの代わりにhjklで移動出来るようにする。
 zmodload zsh/complist
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
@@ -124,6 +124,22 @@ alias ls="ls -G"
 alias ll="ls -al"
 alias la="ls -a"
 
-source ~/enhancd/init.sh
-
 alias be='bundle exec'
+
+alias lg='lazygit'
+
+# zplug section
+
+export ZPLUG_HOME=$(brew --prefix)/opt/zplug
+source $ZPLUG_HOME/init.zsh
+
+zplug "b4b4r07/enhancd", use:init.sh
+
+if ! zplug check --verbose; then
+    printf "インストールしますか？[y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+ 
+zplug load
