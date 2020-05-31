@@ -1,13 +1,25 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 export LANG=ja_JP.UTF-8
 
 PATH=/usr/local/bin:$PATH
+PATH=/usr/local/sbin:$PATH
 PATH=$PATH/usr/bin:$HOME/bin:/sbin
+PATH=/usr/local/opt/openssl@1.1/bin:$PATH
 #PATH=$PATH:$HOME/Library/Android/sdk/platform-tools
-#PATH=$PATH:$HOME/.anyenv/bin
 
 export PATH
 
 #export ANDROID_HOME=$HOME/Library/Android/sdk
+
+# gcloud
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
 
 #anyenvの設定
 eval "$(anyenv init -)"
@@ -51,7 +63,7 @@ bindkey '^R' history-incremental-pattern-search-backward
 bindkey '^S' history-incremental-pattern-search-forward
 
 #^sでfwd-i-search
-stty -ixon
+#stty -ixon
 
 #Emacsモードのキーバインド
 bindkey -e
@@ -114,11 +126,11 @@ bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 
 #ターミナルの左右設定
-PROMPT=$'%{\e[33m%}%n$ '
-RPROMPT=$'%{\e[32m%}[%~]%{\e[m%}'
+#PROMPT=$'%{\e[33m%}%n$ '
+#RPROMPT=$'%{\e[32m%}[%~]%{\e[m%}'
 
 #lsした時の色設定
-export LSCOLORS=gxfxcxdxbxegedabagacad
+#export LSCOLORS=gxfxcxdxbxegedabagacad
 
 alias ls="ls -G"
 alias ll="ls -al"
@@ -134,6 +146,7 @@ export ZPLUG_HOME=$(brew --prefix)/opt/zplug
 source $ZPLUG_HOME/init.zsh
 
 zplug "b4b4r07/enhancd", use:init.sh
+zplug romkatv/powerlevel10k, as:theme, depth:1
 
 if ! zplug check --verbose; then
     printf "インストールしますか？[y/N]: "
@@ -143,3 +156,6 @@ if ! zplug check --verbose; then
 fi
  
 zplug load
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
