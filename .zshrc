@@ -11,11 +11,15 @@ PATH=/usr/local/bin:$PATH
 PATH=/usr/local/sbin:$PATH
 PATH=$PATH/usr/bin:$HOME/bin:/sbin
 PATH=/usr/local/opt/openssl@1.1/bin:$PATH
-#PATH=$PATH:$HOME/Library/Android/sdk/platform-tools
+PATH=$HOME/Documents/flutter/bin:$PATH
+PATH=$PATH:$HOME/Library/Android/sdk/platform-tools
 
 export PATH
 
 #export ANDROID_HOME=$HOME/Library/Android/sdk
+
+# direnv
+eval "$(direnv hook zsh)"
 
 # gcloud
 source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
