@@ -47,7 +47,6 @@ mas "Keynote", id: 409183694
 mas "MyStreamTimer", id: 1460539461
 mas "Pages", id: 409201541
 mas "LINE", id: 539883307
-mas "LadioCast", id: 411213048
 mas "Numbers", id: 409203825
 
 # for co-work
