@@ -5,6 +5,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+export GOPATH="${HOME}/go"
+
 export LANG=ja_JP.UTF-8
 
 PATH=/usr/local/bin:$PATH
@@ -12,6 +14,7 @@ PATH=/usr/local/sbin:$PATH
 PATH=$PATH/usr/bin:$HOME/bin:/sbin
 PATH=/usr/local/opt/openssl@1.1/bin:$PATH
 PATH=$HOME/Documents/flutter/bin:$PATH
+PATH=$GOPATH/bin:$PATH
 PATH=$PATH:$HOME/Library/Android/sdk/platform-tools
 
 export PATH

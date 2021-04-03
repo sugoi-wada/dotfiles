@@ -28,6 +28,7 @@ brew "x264"
 brew "x265"
 brew "yarn"
 brew "youtube-dl"
+brew "go"
 
 cask "font-fira-code"
 cask "amethyst"
