@@ -17,6 +17,7 @@ PATH=$HOME/Documents/flutter/bin:$PATH
 PATH=$GOPATH/bin:$PATH
 PATH=$PATH:$HOME/Library/Android/sdk/platform-tools
 PATH=$HOME/.poetry/bin:$PATH
+PATH=/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
 
 export PATH
 
