@@ -16,6 +16,7 @@ PATH=/usr/local/opt/openssl@1.1/bin:$PATH
 PATH=$HOME/Documents/flutter/bin:$PATH
 PATH=$GOPATH/bin:$PATH
 PATH=$PATH:$HOME/Library/Android/sdk/platform-tools
+PATH=$HOME/.poetry/bin:$PATH
 
 export PATH
 
@@ -32,6 +33,7 @@ source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.
 eval "$(anyenv init -)"
 
 #補完をロードして設定
+fpath+=~/.zfunc # poetry の補完
 autoload -U compinit
 compinit
 
