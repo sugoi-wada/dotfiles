@@ -36,12 +36,8 @@ cask "blackhole-2ch"
 cask "docker"
 cask "google-cloud-sdk"
 cask "hammerspoon"
-cask "kitty"
-cask "ngrok"
 cask "clipy"
 
-mas "com.apple.dt.Xcode", id: 497799835
-mas "com.apple.iWork.Keynote", id: 409183694
 mas "Xcode", id: 497799835
 mas "Keynote", id: 409183694
 mas "MyStreamTimer", id: 1460539461
