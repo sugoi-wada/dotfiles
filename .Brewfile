@@ -1,4 +1,3 @@
-tap "github/gh"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
@@ -12,12 +11,10 @@ brew "tcl-tk"
 brew "boost"
 brew "freetype"
 brew "pkg-config"
-brew "carthage"
 brew "ccache"
 brew "cmake"
 brew "direnv"
 brew "docker-machine"
-brew "ext4fuse"
 brew "unbound"
 brew "ffmpeg"
 brew "firebase-cli"
@@ -51,7 +48,6 @@ brew "poppler"
 brew "portaudio"
 brew "postgresql@12"
 brew "qt"
-brew "ranger"
 brew "sox"
 brew "suil"
 brew "swig"
@@ -63,16 +59,11 @@ brew "zplug"
 brew "itchyny/tap/mmv"
 brew "nodenv/nodenv/nodenv-package-json-engine"
 cask "amethyst"
-cask "blackhole"
 cask "blackhole-2ch"
 cask "docker"
 cask "google-cloud-sdk"
 cask "hammerspoon"
-cask "kitty"
-cask "ngrok"
-cask "osxfuse"
 cask "pgadmin4"
-cask "virtualbox-extension-pack"
 cask "vlc"
 mas "DevCleaner", id: 1388020431
 mas "Duplicate Photos Finder", id: 984929789
@@ -85,10 +76,8 @@ mas "Microsoft Remote Desktop", id: 1295203466
 mas "MyStreamTimer", id: 1460539461
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
-mas "SpeakLine", id: 441968334
 mas "Tailscale", id: 1475387142
 mas "Timer RH", id: 929960914
 mas "Tomato 2", id: 1494210770
-mas "vssr", id: 1522193999
 mas "Xcode", id: 497799835
 mas "Yubico Authenticator", id: 1497506650
