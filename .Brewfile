@@ -1,54 +1,94 @@
+tap "github/gh"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/core"
 tap "homebrew/services"
-
+tap "itchyny/tap"
+tap "nodenv/nodenv"
 brew "anyenv"
+brew "readline"
+brew "tcl-tk"
+brew "boost"
+brew "freetype"
+brew "pkg-config"
+brew "carthage"
+brew "ccache"
+brew "cmake"
 brew "direnv"
+brew "docker-machine"
+brew "ext4fuse"
+brew "unbound"
 brew "ffmpeg"
 brew "firebase-cli"
 brew "fzy"
+brew "gdk-pixbuf"
+brew "gh"
+brew "ghostscript"
+brew "git"
 brew "gnu-sed"
-brew "graphviz"
-brew "hugo"
+brew "go"
+brew "gphoto2"
 brew "jasper"
+brew "netpbm"
+brew "pango"
+brew "graphviz"
+brew "gtk+3"
+brew "hugo"
+brew "imagemagick"
 brew "jq"
 brew "lazydocker"
 brew "lazygit"
+brew "ldns"
+brew "lilv"
+brew "mas"
+brew "mbedtls"
+brew "youtube-dl"
+brew "mpv"
 brew "node-build"
-brew "nodenv"
-brew "nodenv-package-json-engine"
 brew "openssh"
-brew "openssl@1.1"
+brew "poppler"
+brew "portaudio"
+brew "postgresql@12"
+brew "qt"
+brew "ranger"
+brew "sox"
+brew "suil"
+brew "swig"
 brew "the_silver_searcher"
 brew "wget"
-brew "x264"
-brew "x265"
 brew "yarn"
-brew "youtube-dl"
-brew "go"
-brew "gh"
-
-cask "font-fira-code"
+brew "yubico-piv-tool"
+brew "zplug"
+brew "itchyny/tap/mmv"
+brew "nodenv/nodenv/nodenv-package-json-engine"
 cask "amethyst"
+cask "blackhole"
 cask "blackhole-2ch"
 cask "docker"
 cask "google-cloud-sdk"
 cask "hammerspoon"
-cask "clipy"
-
-mas "Xcode", id: 497799835
-mas "Keynote", id: 409183694
-mas "MyStreamTimer", id: 1460539461
-mas "Pages", id: 409201541
-mas "LINE", id: 539883307
-mas "Numbers", id: 409203825
-
-# for co-work
+cask "kitty"
+cask "ngrok"
+cask "osxfuse"
+cask "pgadmin4"
+cask "virtualbox-extension-pack"
+cask "vlc"
+mas "DevCleaner", id: 1388020431
+mas "Duplicate Photos Finder", id: 984929789
+mas "GIPHY CAPTURE", id: 668208984
 mas "Jira", id: 1475897096
-mas "Red", id: 929960914
-mas "Tomato", id: 1494210770
-
-# if use Yubikey
-mas "Yubico", id: 1497506650
+mas "Keynote", id: 409183694
+mas "LadioCast", id: 411213048
+mas "LINE", id: 539883307
+mas "Microsoft Remote Desktop", id: 1295203466
+mas "MyStreamTimer", id: 1460539461
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "SpeakLine", id: 441968334
+mas "Tailscale", id: 1475387142
+mas "Timer RH", id: 929960914
+mas "Tomato 2", id: 1494210770
+mas "vssr", id: 1522193999
+mas "Xcode", id: 497799835
+mas "Yubico Authenticator", id: 1497506650
