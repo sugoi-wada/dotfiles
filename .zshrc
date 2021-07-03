@@ -33,6 +33,15 @@ source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.
 #anyenvの設定
 eval "$(anyenv init -)"
 
+#pyenvの設定
+export PYENV_ROOT="$HOME/.anyenv/envs/pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+
 #補完をロードして設定
 fpath+=~/.zfunc # poetry の補完
 autoload -U compinit
@@ -170,3 +179,4 @@ zplug load
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 function gi() { curl -sLw n https://www.toptal.com/developers/gitignore/api/$@ ;}
+
