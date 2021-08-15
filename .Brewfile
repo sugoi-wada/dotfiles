@@ -44,16 +44,15 @@ brew "youtube-dl"
 brew "mpv"
 brew "node-build"
 brew "openssh"
+brew "qt"
 brew "poppler"
 brew "portaudio"
 brew "postgresql@12"
-brew "qt"
 brew "sox"
 brew "suil"
 brew "swig"
 brew "the_silver_searcher"
 brew "wget"
-brew "yarn"
 brew "yubico-piv-tool"
 brew "zplug"
 brew "itchyny/tap/mmv"
@@ -63,6 +62,7 @@ cask "blackhole-2ch"
 cask "docker"
 cask "google-cloud-sdk"
 cask "hammerspoon"
+cask "maccy"
 cask "pgadmin4"
 cask "vlc"
 mas "DevCleaner", id: 1388020431
@@ -76,6 +76,7 @@ mas "Microsoft Remote Desktop", id: 1295203466
 mas "MyStreamTimer", id: 1460539461
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
+mas "Surfshark", id: 1437809329
 mas "Tailscale", id: 1475387142
 mas "Timer RH", id: 929960914
 mas "Tomato 2", id: 1494210770
