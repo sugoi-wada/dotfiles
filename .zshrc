@@ -7,6 +7,7 @@ fi
 
 export GOPATH="${HOME}/go"
 
+export LC_ALL=ja_JP.UTF-8
 export LANG=ja_JP.UTF-8
 
 PATH=/usr/local/bin:$PATH
@@ -24,6 +25,7 @@ export PATH
 #export ANDROID_HOME=$HOME/Library/Android/sdk
 
 # direnv
+export EDITOR=vi
 eval "$(direnv hook zsh)"
 
 # gcloud
@@ -154,6 +156,7 @@ bindkey -M menuselect 'l' vi-forward-char
 alias ls="ls -G"
 alias ll="ls -al"
 alias la="ls -a"
+alias rmdss="find . -name '.DS_Store' -type f -delete"
 
 alias be='bundle exec'
 
