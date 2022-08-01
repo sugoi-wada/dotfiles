@@ -75,26 +75,17 @@ cask "openmtp"
 cask "opensc"
 cask "pgadmin4"
 cask "vlc"
-mas "Bitwarden", id: 1352778147
 mas "CleanMyDrive 2", id: 523620159
 mas "DevCleaner", id: 1388020431
 mas "Duplicate Photos Finder", id: 984929789
 mas "Flycut", id: 442160987
 mas "Free Ruler", id: 1483172210
 mas "GIPHY CAPTURE", id: 668208984
-mas "Jira", id: 1475897096
-mas "Keynote", id: 409183694
 mas "Kindle", id: 405399194
-mas "LadioCast", id: 411213048
-mas "LINE", id: 539883307
 mas "Medis", id: 1579200037
-mas "Microsoft Remote Desktop", id: 1295203466
-mas "MyStreamTimer", id: 1460539461
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Surfshark", id: 1437809329
-mas "Tailscale", id: 1475387142
 mas "Timer RH", id: 929960914
 mas "Xcode", id: 497799835
-mas "XnConvert", id: 436203431
 mas "Yubico Authenticator", id: 1497506650
