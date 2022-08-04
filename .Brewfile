@@ -77,15 +77,11 @@ cask "secretive"
 cask "vlc"
 mas "CleanMyDrive 2", id: 523620159
 mas "DevCleaner", id: 1388020431
-mas "Duplicate Photos Finder", id: 984929789
 mas "Flycut", id: 442160987
 mas "Free Ruler", id: 1483172210
 mas "GIPHY CAPTURE", id: 668208984
-mas "Kindle", id: 405399194
-mas "Medis", id: 1579200037
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Surfshark", id: 1437809329
-mas "Timer RH", id: 929960914
 mas "Xcode", id: 497799835
 mas "Yubico Authenticator", id: 1497506650
