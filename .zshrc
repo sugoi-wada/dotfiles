@@ -9,6 +9,7 @@ export GOPATH="${HOME}/go"
 
 export LC_ALL=ja_JP.UTF-8
 export LANG=ja_JP.UTF-8
+export SSH_AUTH_SOCK=$HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
 
 PATH=/usr/local/bin:$PATH
 PATH=/usr/local/sbin:$PATH
