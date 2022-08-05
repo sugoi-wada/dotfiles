@@ -30,17 +30,21 @@ export EDITOR=vi
 eval "$(direnv hook zsh)"
 
 # gcloud
-source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
-source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+if command -v gcloud 1>/dev/null 2>&1; then
+  source '/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
+  source '/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+fi
 
 #anyenvの設定
-eval "$(anyenv init -)"
+if command -v anyenv 1>/dev/null 2>&1; then
+  eval "$(anyenv init -)"
+fi
 
 #pyenvの設定
-export PYENV_ROOT="$HOME/.anyenv/envs/pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
 if command -v pyenv 1>/dev/null 2>&1; then
+  export PYENV_ROOT="$HOME/.anyenv/envs/pyenv"
+  export PATH="$PYENV_ROOT/bin:$PATH"
+  #eval "$(pyenv init --path)"
   eval "$(pyenv init -)"
 fi
 
