@@ -35,6 +35,9 @@ if command -v gcloud 1>/dev/null 2>&1; then
   source '/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
 fi
 
+# asdf
+. $(brew --prefix asdf)/libexec/asdf.sh
+
 #anyenvの設定
 if command -v anyenv 1>/dev/null 2>&1; then
   eval "$(anyenv init -)"
