@@ -8,7 +8,7 @@
 [core]
 	precomposeunicode = true
 	quotepath = false
-	excludesfile = /Users/wada/.gitignore_global
+	excludesfile = ~/.gitignore_global
 [alias]
 	st = status
 	co = checkout
@@ -18,12 +18,6 @@
 	ad = add
         sw = switch
 	pushf = push --force-with-lease
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
 [pull]
 	rebase = true
 [filter "lfs"]
