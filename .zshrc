@@ -6,6 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 export GOPATH="${HOME}/go"
+export GOROOT="$(brew --prefix golang)/libexec"
 
 export LC_ALL=ja_JP.UTF-8
 export LANG=ja_JP.UTF-8
@@ -16,7 +17,7 @@ PATH=/usr/local/sbin:$PATH
 PATH=$PATH/usr/bin:$HOME/bin:/sbin
 PATH=/usr/local/opt/openssl@1.1/bin:$PATH
 PATH=$HOME/Documents/flutter/bin:$PATH
-PATH=$GOPATH/bin:$PATH
+PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 PATH=$PATH:$HOME/Library/Android/sdk/platform-tools
 PATH=$HOME/.poetry/bin:$PATH
 PATH=/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
