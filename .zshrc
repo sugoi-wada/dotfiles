@@ -5,12 +5,16 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# asdf
+. $(brew --prefix asdf)/libexec/asdf.sh
+
 export GOPATH="${HOME}/go"
 export GOROOT="$(brew --prefix golang)/libexec"
 
 export LC_ALL=ja_JP.UTF-8
 export LANG=ja_JP.UTF-8
 export SSH_AUTH_SOCK=$HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
+export DOCKER_HOST="unix://$HOME/.colima/default/docker.sock"
 
 PATH=/usr/local/bin:$PATH
 PATH=/usr/local/sbin:$PATH
@@ -21,6 +25,7 @@ PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 PATH=$PATH:$HOME/Library/Android/sdk/platform-tools
 PATH=$HOME/.poetry/bin:$PATH
 PATH=/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
+PATH="${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin:$PATH"
 
 export PATH
 
@@ -29,6 +34,10 @@ export PATH
 # direnv
 export EDITOR=vi
 eval "$(direnv hook zsh)"
+# mactex
+eval "$(/usr/libexec/path_helper)"
+# perl
+eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
 
 # gcloud
 if command -v gcloud 1>/dev/null 2>&1; then
@@ -36,8 +45,6 @@ if command -v gcloud 1>/dev/null 2>&1; then
   source '/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
 fi
 
-# asdf
-. $(brew --prefix asdf)/libexec/asdf.sh
 
 #anyenvの設定
 if command -v anyenv 1>/dev/null 2>&1; then
@@ -170,6 +177,7 @@ alias rmdss="find . -name '.DS_Store' -type f -delete"
 alias be='bundle exec'
 
 alias lg='lazygit'
+alias ld='lazydocker'
 
 # zplug section
 
@@ -196,3 +204,19 @@ function gi() { curl -sLw n https://www.toptal.com/developers/gitignore/api/$@ ;
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/Users/hikaru.wada/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+function ghq-fzf() {
+  local selected_dir=$(ghq list | fzf --query="$LBUFFER")
+
+  if [ -n "$selected_dir" ]; then
+    BUFFER="cd $(ghq root)/${selected_dir}"
+    zle accept-line
+  fi
+
+  zle reset-prompt
+}
+
+zle -N ghq-fzf
+bindkey "^]" ghq-fzf
+
+alias bunx="bun x"
