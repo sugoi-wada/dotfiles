@@ -105,7 +105,6 @@ cask "temurin"
 cask "visual-studio-code"
 cask "vlc"
 cask "zoom"
-mas "au.id.haroldchu.mac.Bandwidth", id: 490461369
 mas "CleanMyDrive 2", id: 523620159
 mas "DevCleaner", id: 1388020431
 mas "Flycut", id: 442160987
