@@ -18,11 +18,8 @@ export DOCKER_HOST="unix://$HOME/.colima/default/docker.sock"
 
 PATH=/usr/local/bin:$PATH
 PATH=/usr/local/sbin:$PATH
-PATH=$PATH/usr/bin:$HOME/bin:/sbin
-PATH=/usr/local/opt/openssl@1.1/bin:$PATH
-PATH=$HOME/Documents/flutter/bin:$PATH
+PATH=$PATH/usr/bin:$HOME/bin:/sbin:$PATH
 PATH=$GOPATH/bin:$GOROOT/bin:$PATH
-PATH=$PATH:$HOME/Library/Android/sdk/platform-tools
 PATH=$HOME/.poetry/bin:$PATH
 PATH=/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
 PATH="${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin:$PATH"
@@ -220,3 +217,4 @@ zle -N ghq-fzf
 bindkey "^]" ghq-fzf
 
 alias bunx="bun x"
+export PATH="/opt/homebrew/bin:$PATH"
