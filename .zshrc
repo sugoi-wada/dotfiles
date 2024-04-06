@@ -5,9 +5,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# asdf
-. $(brew --prefix asdf)/libexec/asdf.sh
-
 export GOPATH="${HOME}/go"
 export GOROOT="$(brew --prefix golang)/libexec"
 
@@ -218,3 +215,4 @@ bindkey "^]" ghq-fzf
 
 alias bunx="bun x"
 export PATH="/opt/homebrew/bin:$PATH"
+eval "$(mise activate zsh)"
