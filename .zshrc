@@ -5,9 +5,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-export GOPATH="${HOME}/go"
-export GOROOT="$(brew --prefix golang)/libexec"
-
 export LC_ALL=ja_JP.UTF-8
 export LANG=ja_JP.UTF-8
 export SSH_AUTH_SOCK=$HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
@@ -16,9 +13,9 @@ export DOCKER_HOST="unix://$HOME/.colima/default/docker.sock"
 PATH=/usr/local/bin:$PATH
 PATH=/usr/local/sbin:$PATH
 PATH=$PATH/usr/bin:$HOME/bin:/sbin:$PATH
-PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 PATH=$HOME/.poetry/bin:$PATH
 PATH=/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
+PATH=$HOME/.deno/bin:$PATH
 PATH="${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin:$PATH"
 
 export PATH
@@ -194,10 +191,6 @@ zplug load
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 function gi() { curl -sLw n https://www.toptal.com/developers/gitignore/api/$@ ;}
 
-
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/hikaru.wada/.rd/bin:$PATH"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 
 function ghq-fzf() {
   local selected_dir=$(ghq list | fzf --query="$LBUFFER")
