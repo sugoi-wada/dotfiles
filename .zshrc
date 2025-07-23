@@ -8,27 +8,15 @@ fi
 export LC_ALL=ja_JP.UTF-8
 export LANG=ja_JP.UTF-8
 export SSH_AUTH_SOCK=$HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
-export DOCKER_HOST="unix://$HOME/.colima/default/docker.sock"
+export DOCKER_HOST="unix://$HOME/.lima/default/sock/docker.sock"
 
 PATH=/usr/local/bin:$PATH
 PATH=/usr/local/sbin:$PATH
 PATH=$PATH/usr/bin:$HOME/bin:/sbin:$PATH
-PATH=$HOME/.poetry/bin:$PATH
-PATH=/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
 PATH=$HOME/.deno/bin:$PATH
 PATH="${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin:$PATH"
 
 export PATH
-
-#export ANDROID_HOME=$HOME/Library/Android/sdk
-
-# direnv
-export EDITOR=vi
-eval "$(direnv hook zsh)"
-# mactex
-eval "$(/usr/libexec/path_helper)"
-# perl
-eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
 
 # gcloud
 if command -v gcloud 1>/dev/null 2>&1; then
@@ -36,28 +24,7 @@ if command -v gcloud 1>/dev/null 2>&1; then
   source '/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
 fi
 
-
-#anyenvの設定
-if command -v anyenv 1>/dev/null 2>&1; then
-  eval "$(anyenv init -)"
-fi
-
-#pyenvの設定
-if command -v pyenv 1>/dev/null 2>&1; then
-  export PYENV_ROOT="$HOME/.anyenv/envs/pyenv"
-  export PATH="$PYENV_ROOT/bin:$PATH"
-  #eval "$(pyenv init --path)"
-  eval "$(pyenv init -)"
-fi
-
-
-#補完をロードして設定
-fpath+=~/.zfunc # poetry の補完
-autoload -U compinit
-compinit
-
 #履歴
-HISTFILE=~/.zhistory
 HISTSIZE=100000
 SAVEHIST=100000
 
@@ -209,3 +176,5 @@ bindkey "^]" ghq-fzf
 alias bunx="bun x"
 export PATH="/opt/homebrew/bin:$PATH"
 eval "$(mise activate zsh)"
+
+export CLAUDE_CONFIG_DIR=$HOME/.claude

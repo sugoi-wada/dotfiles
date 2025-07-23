@@ -8,6 +8,8 @@
 	<string>gpt-3.5-turbo</string>
 	<key>AlternateMouseScroll</key>
 	<true/>
+	<key>AlwaysOpenWindowAtStartup</key>
+	<true/>
 	<key>Default Bookmark Guid</key>
 	<string>378C0FAE-55BC-411D-9C84-B2CE358A776A</string>
 	<key>GlobalKeyMap</key>
@@ -380,7 +382,7 @@
 			<key>Disable Window Resizing</key>
 			<true/>
 			<key>Flashing Bell</key>
-			<false/>
+			<true/>
 			<key>Foreground Color</key>
 			<dict>
 				<key>Blue Component</key>

@@ -1,0 +1,30 @@
+{
+  "model": "sonnet",
+  "permissions": {
+    "allow": [
+      "Bash(git:*)",
+      "Bash(pwd)",
+      "Bash(echo:*)",
+      "Bash(ls:*)",
+      "Bash(git:*)",
+      "Bash(git stash:*)",
+      "Bash(git status:*)",
+      "Bash(git pull:*)",
+      "Bash(git add:*)",
+      "Bash(git fetch:*)",
+      "Bash(git checkout:*)",
+      "Bash(git commit:*)",
+      "Bash(printf:*)",
+      "Bash(sleep:*)",
+      "Bash(history:*)",
+      "Bash(find:*)",
+      "Bash(rg:*)",
+      "Bash(yarn:*)",
+      "Bash(npm:*)",
+      "Bash(pnpm:*)",
+      "Bash(grep:*)",
+      "Read(./**/*)",
+      "Bash(gh:*)"
+    ]
+  }
+}
