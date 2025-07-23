@@ -18,12 +18,6 @@ PATH="${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin:$
 
 export PATH
 
-# gcloud
-if command -v gcloud 1>/dev/null 2>&1; then
-  source '/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
-  source '/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
-fi
-
 #履歴
 HISTSIZE=100000
 SAVEHIST=100000
