@@ -1,7 +1,5 @@
 tap "aquaproj/aqua"
 tap "felixkratz/formulae"
-tap "homebrew/bundle"
-tap "homebrew/services"
 tap "yt-dlp/taps"
 brew "actionlint"
 brew "xz"
