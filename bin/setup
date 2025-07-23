@@ -1,0 +1,4 @@
+ls ~/.dotfiles/.* | xargs -I{} basename "{}" | xargs -I{} ln -s ~/.dotfiles/{} ~/{}
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew bundle --file=~/.Brewfile
+source $SHELL -l
