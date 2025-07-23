@@ -12,6 +12,8 @@ brew "readline"
 brew "deno"
 brew "docker"
 brew "docker-buildx"
+brew "docker-compose"
+brew "docker-credential-helper"
 brew "unbound"
 brew "mbedtls"
 brew "pango"
@@ -69,13 +71,17 @@ cask "raycast"
 cask "rocket"
 cask "secretive"
 cask "shottr"
+cask "slack"
 cask "tableplus"
 cask "visual-studio-code"
 cask "zoom"
 mas "DevCleaner", id: 1388020431
 mas "Free Ruler", id: 1483172210
+mas "GarageBand", id: 682658836
 mas "GIPHY CAPTURE", id: 668208984
+mas "iMovie", id: 408981434
 mas "Keeper Password Manager", id: 414781829
+mas "Keynote", id: 409183694
 mas "Kindle", id: 302584613
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
