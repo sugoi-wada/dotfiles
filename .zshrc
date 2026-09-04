@@ -236,7 +236,6 @@ alias bunx="bun x"
 export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 eval "$(mise activate zsh)"
 
-export CLAUDE_CONFIG_DIR=$HOME/.claude
 
 
 # The next line updates PATH for the Google Cloud SDK.
@@ -245,12 +244,6 @@ if [ -f '/opt/homebrew/share/google-cloud-sdk/path.zsh.inc' ]; then . '/opt/home
 # The next line enables shell command completion for gcloud.
 if [ -f '/opt/homebrew/share/google-cloud-sdk/completion.zsh.inc' ]; then . '/opt/homebrew/share/google-cloud-sdk/completion.zsh.inc'; fi
 export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
-
-alias claude-monicle="CLAUDE_CONFIG_DIR=~/.claude-monicle command claude"
-alias claude-personal="CLAUDE_CONFIG_DIR=~/.claude-personal command claude"
-
-# 素の `claude` は誤爆防止でエラーにしておく
-alias claude="echo 'Use claude-monicle or claude-personal'"
 
 # aqua がプライベートリポジトリ(monicle/aqua-registry)にアクセスするために必要
 export GITHUB_TOKEN=$(gh auth token 2>/dev/null)
