@@ -1,0 +1,8 @@
+[theme]
+name = "catppuccin"
+
+[theme.custom]
+text = "#f2f4f8"
+subtext0 = "#d6dae0"
+overlay1 = "#b8bec7"
+overlay0 = "#9aa1ac"
