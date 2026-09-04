@@ -90,4 +90,4 @@ rosetta:
   enabled: true
   binfmt: true
 vmType: vz
-
+mountInotify: true

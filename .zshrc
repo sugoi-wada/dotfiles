@@ -8,9 +8,9 @@ fi
 export LC_ALL=ja_JP.UTF-8
 export LANG=ja_JP.UTF-8
 export SSH_AUTH_SOCK=$HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
-export DOCKER_HOST="unix://$HOME/.lima/default/sock/docker.sock"
 
 PATH=/usr/local/bin:$PATH
+PATH=$HOME/.local/bin:$PATH
 PATH=/usr/local/sbin:$PATH
 PATH=$PATH/usr/bin:$HOME/bin:/sbin:$PATH
 PATH=$HOME/.deno/bin:$PATH
@@ -154,21 +154,103 @@ function gi() { curl -sLw n https://www.toptal.com/developers/gitignore/api/$@ ;
 
 
 function ghq-fzf() {
-  local selected_dir=$(ghq list | fzf --query="$LBUFFER")
-
-  if [ -n "$selected_dir" ]; then
-    BUFFER="cd $(ghq root)/${selected_dir}"
-    zle accept-line
+  # ghq rootの取得とエラーチェック
+  local ghq_root=$(ghq root 2>/dev/null)
+  if [[ -z "$ghq_root" ]]; then
+    echo "Error: ghq is not properly configured" >&2
+    zle reset-prompt
+    return 1
   fi
 
-  zle reset-prompt
+  # ローカルのghqリポジトリリストを取得
+  local local_repos=$(ghq list 2>/dev/null || true)
+  
+  # GitHub上のリポジトリリストを取得（エラーハンドリング付き）
+  echo "🔍 Fetching GitHub repositories..." >&2
+  local github_repos=$(gh api --paginate /user/repos --jq '.[].full_name' 2>/dev/null || true)
+  
+  # 連想配列を使った効率的な重複チェック
+  typeset -A local_repo_map
+  local -a all_repos_array=()
+  
+  # ローカルリポジトリを配列に追加し、マップに記録
+  if [[ -n "$local_repos" ]]; then
+    while IFS= read -r repo; do
+      [[ -n "$repo" ]] || continue
+      local_repo_map[$repo]=1
+      all_repos_array+=("[LOCAL] $repo")
+    done <<< "$local_repos"
+  fi
+  
+  # リモートリポジトリを追加（重複チェック付き）
+  if [[ -n "$github_repos" ]]; then
+    while IFS= read -r repo; do
+      [[ -n "$repo" ]] || continue
+      if [[ -z "${local_repo_map[$repo]}" ]]; then
+        all_repos_array+=("[REMOTE] $repo")
+      fi
+    done <<< "$github_repos"
+  fi
+
+  # 配列が空の場合の処理
+  if [[ ${#all_repos_array[@]} -eq 0 ]]; then
+    echo "No repositories found" >&2
+    zle reset-prompt
+    return 1
+  fi
+
+  # fzfで選択
+  local selected=$(printf '%s\n' "${all_repos_array[@]}" | fzf --query="$LBUFFER" --preview 'echo {}' --preview-window=up:1)
+
+  if [[ -n "$selected" ]]; then
+    local repo_path=$(echo "$selected" | sed 's/^\[LOCAL\] //; s/^\[REMOTE\] //')
+    
+    # リポジトリ名の検証（セキュリティ対策）
+    if [[ ! "$repo_path" =~ ^[a-zA-Z0-9._/-]+$ ]]; then
+      echo "Error: Invalid repository path: $repo_path" >&2
+      zle reset-prompt
+      return 1
+    fi
+    
+    local full_path="$ghq_root/$repo_path"
+    
+    if [[ "$selected" == "[LOCAL]"* ]]; then
+      # ローカルに存在する場合は直接移動（安全なクォート処理）
+      BUFFER="cd $(printf '%q' "$full_path")"
+    else
+      # リモートの場合はghq getしてから移動（安全なクォート処理）
+      # ghqは github.com/owner/repo の形式でディレクトリを作成するため、実際のパスを取得
+      BUFFER="ghq get $(printf '%q' "$repo_path") && cd \"\$(ghq root)/github.com/$(printf '%q' "$repo_path")\""
+    fi
+    zle accept-line
+    zle reset-prompt
+  else
+    zle reset-prompt
+  fi
 }
 
 zle -N ghq-fzf
 bindkey "^]" ghq-fzf
 
 alias bunx="bun x"
-export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 eval "$(mise activate zsh)"
 
 export CLAUDE_CONFIG_DIR=$HOME/.claude
+
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/opt/homebrew/share/google-cloud-sdk/path.zsh.inc' ]; then . '/opt/homebrew/share/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/opt/homebrew/share/google-cloud-sdk/completion.zsh.inc' ]; then . '/opt/homebrew/share/google-cloud-sdk/completion.zsh.inc'; fi
+export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
+
+alias claude-monicle="CLAUDE_CONFIG_DIR=~/.claude-monicle command claude"
+alias claude-personal="CLAUDE_CONFIG_DIR=~/.claude-personal command claude"
+
+# 素の `claude` は誤爆防止でエラーにしておく
+alias claude="echo 'Use claude-monicle or claude-personal'"
+
+# aqua がプライベートリポジトリ(monicle/aqua-registry)にアクセスするために必要
+export GITHUB_TOKEN=$(gh auth token 2>/dev/null)
