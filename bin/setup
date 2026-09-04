@@ -1,5 +1,44 @@
-ls ~/.dotfiles/.* | xargs -I{} basename "{}" | xargs -I{} ln -s ~/.dotfiles/{} ~/{}
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-eval "$(/opt/homebrew/bin/brew shellenv)"
-brew bundle --file=~/.Brewfile
-source $SHELL -l
+#!/bin/bash
+set -euo pipefail
+
+DOTFILES="$HOME/.dotfiles"
+
+link() {
+  local src="$1" target="$2"
+  mkdir -p "$(dirname "$target")"
+  if [ -L "$target" ] && [ "$(readlink "$target")" = "$src" ]; then
+    return
+  fi
+  if [ -e "$target" ] || [ -L "$target" ]; then
+    echo "skip (already exists): $target"
+    return
+  fi
+  ln -s "$src" "$target"
+  echo "linked: $target -> $src"
+}
+
+# ~/.dotfiles/.foo -> ~/.foo （直下のドットファイル/ディレクトリ）
+for src in "$DOTFILES"/.*; do
+  name="$(basename "$src")"
+  case "$name" in
+    . | .. | .git | .gitignore | .gitignore_global | .config) continue ;;
+  esac
+  link "$src" "$HOME/$name"
+done
+
+# ~/.dotfiles/.config/foo/bar -> ~/.config/foo/bar （ネストしたファイル単位でリンク）
+if [ -d "$DOTFILES/.config" ]; then
+  while IFS= read -r -d '' src; do
+    rel="${src#"$DOTFILES"/.config/}"
+    link "$src" "$HOME/.config/$rel"
+  done < <(find "$DOTFILES/.config" -type f -print0)
+fi
+
+if ! command -v brew >/dev/null 2>&1; then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+brew bundle --file="$DOTFILES/.Brewfile"
+
+exec "$SHELL" -l
