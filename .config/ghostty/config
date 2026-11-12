@@ -1,6 +1,6 @@
 # Quick Terminal（オーバーレイ全画面表示）
-# Ctrl+I で呼び出し/隠す
-keybind = global:ctrl+i=toggle_quick_terminal
+# F9 で呼び出し/隠す
+keybind = global:f9=toggle_quick_terminal
 
 # 画面全体を覆うオーバーレイとして表示
 quick-terminal-position = center
@@ -8,6 +8,10 @@ quick-terminal-size = 100%,100%
 
 # 起動アニメーション時間（秒）。0で無効化
 quick-terminal-animation-duration = 0
+
+# フォーカスを失っても隠さない
+# 既定はtrueで、macOSのモーダルにフォーカスを奪われた瞬間に消えてしまう
+quick-terminal-autohide = false
 
 # 半透明（iTerm2の実プロファイル値: Transparency 31% ≒ opacity 0.69）
 background-opacity = 0.69
@@ -18,3 +22,6 @@ macos-hidden = always
 
 # Cmd+Qでの誤終了防止（常に確認ダイアログを出す）
 confirm-close-surface = always
+
+# 日本語フォント（Ghostty 1.3.1 + macOS 26 のCJKフォールバック不具合 #12916 対策）
+font-family = "HackGen Console NF"
