@@ -33,14 +33,15 @@
         pruneTags = true
 [init]
 	defaultBranch = main
-[credential "https://github.com"]
-	helper = 
-	helper = !/opt/homebrew/bin/gh auth git-credential
-[credential "https://gist.github.com"]
-	helper = 
-	helper = !/opt/homebrew/bin/gh auth git-credential
 [credential]
 	helper = 
 	helper = /usr/local/share/gcm-core/git-credential-manager
+# GitHub は gh を使う。[credential] より後に置かないと、上の helper の空行（リセット）で gh が消える
+[credential "https://github.com"]
+	helper =
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper =
+	helper = !/opt/homebrew/bin/gh auth git-credential
 [credential "https://dev.azure.com"]
 	useHttpPath = true
