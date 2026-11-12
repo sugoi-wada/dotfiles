@@ -1,10 +1,7 @@
 tap "aquaproj/aqua", trusted: true
 tap "domt4/autoupdate", "https://github.com/DomT4/homebrew-autoupdate.git", trusted: { commands: ["autoupdate"] }
-tap "felixkratz/formulae"
 # Static checker for GitHub Actions workflow files
 brew "actionlint"
-# Statusbar replacement daemon (felixkratz)
-brew "felixkratz/formulae/borders"
 # Declarative CLI Version manager
 brew "aqua"
 # Tool for managing secrets on Google Cloud
@@ -15,6 +12,8 @@ brew "buf"
 brew "freetype"
 # Utility for connecting securely to your Cloud SQL instances
 brew "cloud-sql-proxy"
+# Cloudflare Tunnel client (formerly Argo Tunnel)
+brew "cloudflared"
 # Cross-platform make
 brew "cmake"
 # GNU File, Shell, and Text utilities
@@ -27,6 +26,8 @@ brew "webp"
 brew "readline"
 # Secure runtime for JavaScript and TypeScript
 brew "deno"
+# Reference implementation for the Development Containers specification
+brew "devcontainer"
 # Pack, ship and run any application as a lightweight container
 brew "docker"
 # Docker CLI plugin for extended build capabilities with BuildKit
@@ -67,6 +68,8 @@ brew "netpbm"
 brew "graphviz"
 # Agent multiplexer that lives in your terminal
 brew "herdr"
+# Review-first terminal diff viewer for agent-authored changesets
+brew "hunk"
 # Run and Test HTTP Requests with plain text and curl
 brew "hurl"
 # Tools and libraries to manipulate images in select formats
@@ -109,6 +112,10 @@ brew "pinact"
 brew "pinentry-mac"
 # Cross-platform library for audio I/O
 brew "portaudio"
+# CLI proxy to minimize LLM token consumption
+brew "rtk"
+# Utility to modify the macOS Accessibility Database (TCC.db)
+brew "tccutil"
 # Enables extra languages support for Tesseract
 brew "tesseract-lang"
 # Terraform version manager inspired by rbenv
@@ -127,19 +134,20 @@ brew "zplug"
 cask "amethyst"
 # Application uninstaller
 cask "appcleaner"
-# Chromium based browser
-cask "arc"
 # Desktop password and login vault
 cask "bitwarden"
 # Virtual Audio Driver
 cask "blackhole-2ch"
 # Terminal-based AI coding assistant
-cask "claude-code"
+cask "claude-code@latest"
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
+# Brings the power of Copilot coding agent directly to your terminal
+cask "copilot-cli"
 # Collaborative team software
 cask "figma"
 cask "font-fira-code"
+cask "font-hackgen-nerd"
 # Set of tools to manage resources and applications hosted on Google Cloud
 cask "gcloud-cli"
 # Terminal emulator that uses platform-native UI and GPU acceleration
@@ -152,8 +160,6 @@ cask "google-chrome"
 cask "notion"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
-# AI coding agent desktop client
-cask "opencode-desktop"
 # Android file transfer
 cask "openmtp"
 # Control your tools with a few keystrokes
@@ -181,7 +187,6 @@ mas "Keeper Password Manager", id: 414781829
 mas "Keynote", id: 409183694
 mas "Kindle", id: 302584613
 mas "Numbers", id: 409203825
-mas "Xcode", id: 497799835
 mas "Pages", id: 409201541
 mas "Yubico Authenticator", id: 1497506650
 vscode "anthropic.claude-code"
@@ -206,6 +211,7 @@ vscode "ms-vscode-remote.remote-ssh-edit"
 vscode "ms-vscode.remote-explorer"
 vscode "ms-vscode.remote-server"
 vscode "openai.chatgpt"
+vscode "openai.codex-audio"
 vscode "pimzino.spec-workflow-mcp"
 vscode "usernamehw.autolink"
 vscode "vitest.explorer"
