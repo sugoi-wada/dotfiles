@@ -1,0 +1,74 @@
+id = "hunk"
+name = "Hunk Diff"
+version = "0.7.0"
+min_herdr_version = "0.8.0"
+description = "Hunk の diff を Herdr で開く。既定は一時的な全画面 (overlay)。ホストと devcontainer 内のワークツリーを横断して選べる。"
+platforms = ["macos", "linux"]
+
+# 一時的な全画面で開くペイン。実際の動作は HUNK_MODE / HUNK_DIR で切り替える。
+# hunk を抜けるとこのペインは閉じる。
+[[panes]]
+id = "diff"
+title = "hunk"
+placement = "overlay"
+command = ["./hunk-pane.sh"]
+
+# レビューコメントをエージェントへ送るペイン
+[[panes]]
+id = "feedback"
+title = "hunk feedback"
+placement = "overlay"
+command = ["./hunk-feedback.sh"]
+
+# --- overlay (一時的な全画面): 既定の使い方 ---
+# ~/tasks に常駐していると cwd 依存では常にタスク管理リポジトリの diff になるため
+# pick ではペイン内で fzf を出して対象を選ぶ
+[[actions]]
+id = "pick"
+title = "Hunk: ディレクトリを選んで diff (全画面)"
+contexts = ["pane", "workspace"]
+command = ["python3", "hunk_herdr.py", "pick", "overlay"]
+
+[[actions]]
+id = "worktree"
+title = "Hunk: 未コミットの diff (全画面)"
+contexts = ["pane", "workspace"]
+command = ["python3", "hunk_herdr.py", "worktree", "overlay"]
+
+[[actions]]
+id = "staged"
+title = "Hunk: staged の diff (全画面)"
+contexts = ["pane", "workspace"]
+command = ["python3", "hunk_herdr.py", "staged", "overlay"]
+
+[[actions]]
+id = "branch"
+title = "Hunk: ブランチ差分 (全画面)"
+contexts = ["pane", "workspace"]
+command = ["python3", "hunk_herdr.py", "branch", "overlay"]
+
+# --- split / tab: 並べて見たいとき ---
+[[actions]]
+id = "pick-split"
+title = "Hunk: ディレクトリを選んで diff (split)"
+contexts = ["pane", "workspace"]
+command = ["python3", "hunk_herdr.py", "pick", "split"]
+
+[[actions]]
+id = "pick-tab"
+title = "Hunk: ディレクトリを選んで diff (tab)"
+contexts = ["pane", "workspace"]
+command = ["python3", "hunk_herdr.py", "pick", "tab"]
+
+[[actions]]
+id = "worktree-split"
+title = "Hunk: 未コミットの diff (split)"
+contexts = ["pane", "workspace"]
+command = ["python3", "hunk_herdr.py", "worktree", "split"]
+
+# --- レビューコメントをエージェントへ流す ---
+[[actions]]
+id = "feedback"
+title = "Hunk: コメントをエージェントへ送る"
+contexts = ["pane", "workspace", "global"]
+command = ["python3", "hunk_herdr.py", "feedback", "overlay"]
