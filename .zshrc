@@ -239,6 +239,9 @@ eval "$(mise activate zsh)"
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/opt/homebrew/share/google-cloud-sdk/path.zsh.inc' ]; then . '/opt/homebrew/share/google-cloud-sdk/path.zsh.inc'; fi
 
+# CLOUDSDK_PYTHON が消えた Python を指していたら外す（未指定なら gcloud が使える python3.x を自分で選ぶ）
+if [[ -n "${CLOUDSDK_PYTHON:-}" && ! -x "$CLOUDSDK_PYTHON" ]]; then unset CLOUDSDK_PYTHON; fi
+
 # The next line enables shell command completion for gcloud.
 if [ -f '/opt/homebrew/share/google-cloud-sdk/completion.zsh.inc' ]; then . '/opt/homebrew/share/google-cloud-sdk/completion.zsh.inc'; fi
 export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
